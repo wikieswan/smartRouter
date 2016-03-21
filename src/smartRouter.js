@@ -9,34 +9,35 @@
 	根据路由信息打开某个路由
 	opt : 
 	{
-		templateId: 'someId',
+		routerId: 'someId',
 		html: '<div>hello</div>',
 		script: 'path/xxx.js',
 		param: {
 			name : 'jack'
-		}
+		},
+		overwrite: false
 	}
 	*/
 	SmartRouter.prototype.nav = function(opt){
-		var templateId = opt.templateId || '',
+		var routerId = opt.routerId || '',
 			view = opt.view || 'body',
 			html = opt.html || '',
 			script = opt.script || '',
 			param = opt.param || {},
 			overwrite =  opt.overwrite || false;
-		if(templateId===''){
-			console.error('templateId must be a string');
+		if(routerId===''){
+			console.error('routerId must be a string');
 		}
-		var router  = getRouterByTemplateId(templateId);
+		var router  = getRouterByrouterId(routerId);
 		//路由信息不存在
 		if(!router){
 			routerStack.push({
-				templateId: templateId,
+				routerId: routerId,
 				view: view,
 				script: script
 			});
-			paramObj[templateId] = param;
-			cacheTemplateHtmlContent(templateId,html);
+			paramObj[routerId] = param;
+			cacheTemplateHtmlContent(routerId,html);
 			document.getElementById(view).innerHTML = html;
 			if(script!=''){
 				loadScript(script);
@@ -47,22 +48,22 @@
 			if(overwrite){
 				router.view = view;
 				router.script = script;
-				paramObj[templateId] = param;
-				cacheTemplateHtmlContent(templateId,html);
+				paramObj[routerId] = param;
+				cacheTemplateHtmlContent(routerId,html);
 				document.getElementById(view).innerHTML = html;
 				if(script!=''){
 					loadScript(script);
 				}
 			}
 			else{
-				document.getElementById(router.view).innerHTML = document.getElementById(templateId).innerHTML;
+				document.getElementById(router.view).innerHTML = document.getElementById(routerId).innerHTML;
 				if(script!=''){
 					loadScript(script);
 				}
 			}
 			
 		}
-		setRouterActive(templateId);
+		setRouterActive(routerId);
 	}
 	/**
 	
@@ -89,13 +90,13 @@
 		}
 	}
 	/**
-	获取指定 templateId 的参数
+	获取指定 routerId 的参数
 	*/
-	SmartRouter.prototype.getParam = function(templateId){
-		if(templateId===''){
+	SmartRouter.prototype.getParam = function(routerId){
+		if(routerId===''){
 			return false;
 		}
-		return paramObj[templateId];
+		return paramObj[routerId];
 	}
 	/**
 	获取所有参数列表
@@ -124,12 +125,12 @@
 		return onlyParamObj[id];
 	}
 	/**
-	根据 templateId 返回 routerStack 中对应的路由信息,不存在就返回false
+	根据 routerId 返回 routerStack 中对应的路由信息,不存在就返回false
 	*/
-	function getRouterByTemplateId(templateId){
+	function getRouterByrouterId(routerId){
 		for(var i=0,len=routerStack.length,e;i<len;i++){
 			e = routerStack[i];
-			if(e.templateId===templateId){
+			if(e.routerId===routerId){
 				return e;
 			}
 		}
@@ -138,10 +139,10 @@
 	/**
 	 设置路由信息的active
 	*/
-	function setRouterActive(templateId){
+	function setRouterActive(routerId){
 		for(var i=0,len=routerStack.length,e;i<len;i++){
 			e = routerStack[i];
-			e.active = e.templateId===templateId
+			e.active = e.routerId===routerId
 		}
 	}
 
@@ -167,10 +168,10 @@
     /**
 	缓存路由的html内容
     */
-    function cacheTemplateHtmlContent(templateId,html){
+    function cacheTemplateHtmlContent(routerId,html){
     	var div = document.createElement('div');
     	div.style.display = 'none';
-    	div.setAttribute('id', templateId);
+    	div.setAttribute('id', routerId);
     	div.innerHTML = html;
     	document.documentElement.appendChild(div);
     }
