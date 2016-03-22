@@ -40,8 +40,9 @@ overwrite boolean 非必须，如果路由堆栈中已经存在这个路由器�
 
 那么有两种方式来维护 es6 的字符串，
 
-1 模板字符串
-2 webpack 的 html loader
++ 1 模板字符串
+
++ 2 webpack 的 html loader
 
 这里就不详细讲了，具体自己脑补吧。
 
