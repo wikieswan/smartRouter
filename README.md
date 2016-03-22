@@ -96,7 +96,7 @@ webview  智能路由器
 		other: 'ss'
 	}
 
-## smaetRouter.onlyGetParam(msgId)
+## smartRouter.onlyGetParam(msgId)
 
 作用：读取共享参数服务里面的参数，视图间共享参数时使用
 
