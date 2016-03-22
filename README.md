@@ -1,6 +1,8 @@
 # smartRouter
 webview  智能路由器
 
+作用： webview 嵌套 html 页面这种 hybrid 模式在某些业务场景下成为架构首选方式。通常情况下， webview 嵌套的 html 是采用 MPA 模式 -- 每个 webview 对应一个 html 页面 。有时候，业务场景是这样的 -- native 的 webview 嵌套了一个页面，但是它是流程页面，由多个视图组成（是不是很熟悉，SPA），那么我们需要实现多视图间的自由切换和参数传递，那么，这就是 smartRouter 做的事情。
+
 # api
 
 	smartRouter.nav(opt)
