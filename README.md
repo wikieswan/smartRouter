@@ -35,6 +35,16 @@ script string 非必须，路由视图对应的 js 文件
 param object 非必须，切换路由传递的参数
 overwrite boolean 非必须，如果路由堆栈中已经存在这个路由器，是否需要重写路由信息，默认是 false
 
+这里说下，html 字符串在 js 中维护难的事情。
+说到在 js 代码里面写 html 字符串，大家可能觉得有点坑。但是这个项目针对 webview 项目的，所以我们机智的用了 webpack 构建工具，支持 es6 哦！ 
+
+那么有两种方式来维护 es6 的字符串，
+
+1 模板字符串
+2 webpack 的 html loader
+
+这里就不详细讲了，具体自己脑补吧。
+
 ## smartRouter.goto(index)
 
 作用：在路由堆栈中，从当前路由位置，切换到任意路由位置。

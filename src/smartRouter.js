@@ -1,3 +1,7 @@
+/**
+* wikieswan
+*/
+
 (function(){
 	var routerStack = [];
 	var paramObj = {};
