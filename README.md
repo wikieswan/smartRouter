@@ -13,6 +13,7 @@ webview  智能路由器
 ## smartRouter.nav(opt)
 
 作用：打开某个路由
+
 参数：
 	
 	opt : 
@@ -37,6 +38,7 @@ overwrite boolean 非必须，如果路由堆栈中已经存在这个路由器�
 ## smartRouter.goto(index)
 
 作用：在路由堆栈中，从当前路由位置，切换到任意路由位置。
+
 参数：index number 从当前位置切换到某个路由需要步长。
 
 比如说，目前路由堆栈是有3个路由信息，分别是：
@@ -54,16 +56,19 @@ overwrite boolean 非必须，如果路由堆栈中已经存在这个路由器�
 ## smartRouter.getParam(routerId)
 
 作用：获取指定路由器传递来的参数
+
 参数：routerId 路由器的唯一标示
 
 ## smartRouter.getAllParam()
 
 作用：获取所有路由器传递来的参数
+
 参数：无
 
 ## smartRouter.onlyPostParam(opt)
 
 作用：向共享参数服务里面写入参数，视图间共享参数时使用
+
 参数：opt object 传递的参数，必须有 id 属性，并且保证唯一性
 
 
@@ -75,5 +80,6 @@ overwrite boolean 非必须，如果路由堆栈中已经存在这个路由器�
 ## smaetRouter.onlyGetParam(msgId)
 
 作用：读取共享参数服务里面的参数，视图间共享参数时使用
+
 参数：msgId 参数
 
